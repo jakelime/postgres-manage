@@ -32,3 +32,11 @@ GRANT USAGE, SELECT ON SEQUENCES TO matrappuser;
 -- For Reader (Read-only on future tables created by Admin)
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
 GRANT SELECT ON TABLES TO matrreader;
+
+
+/*
+-- OPTIONAL: Allow Reader to see tables created by matrappuser
+-- You must run this while logged in as a Superuser or a role with permissions over matrappuser
+*/
+ALTER DEFAULT PRIVILEGES FOR ROLE matrappuser IN SCHEMA public
+GRANT SELECT ON TABLES TO matrreader;
